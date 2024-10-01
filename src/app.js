@@ -1,8 +1,16 @@
 const express = require("express")
-const app = express()
+const dotenv = require('dotenv')
+const connectDB = require('./config/db')
 const livrosRoute = require('./routes/livrosRoutes')
 
-app.use(express.json())
-app.use("/livros", livrosRoute)
+dotenv.config()
+connectDB()
 
-module.exports = app
+const app = express()
+app.use(express.json())
+
+app.use("/protected", livrosRoute)
+app.use('/api', userRoutes)
+
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`))

@@ -1,13 +1,19 @@
-const express = require("express");
-const router = express.Router();
-const livrosControllers = require("../controllers/livrosControllers");
+const express = require("express")
+const router = express.Router()
+const livrosControllers = require("../controllers/livrosControllers")
+const { signup, login, protected} = require('../controllers/livrosControllers')
+const authenticateToken = require('../middlewares/authMiddleware')
 
-router.post("/", livrosControllers.cadastrarLivro);
+router.post('/signup', signup)
+router.post('/login', login)
+router.get('/livros', authenticateToken, protected)
 
-router.get("/", livrosControllers.buscarLivros);
+router.post("/livros", livrosControllers.cadastrarLivro)
 
-router.put("/:id", livrosControllers.atualizarLivro);
+router.get("/livros", livrosControllers.buscarLivros)
 
-router.delete("/:id", livrosControllers.deletarLivro);
+router.put("/livros:id", livrosControllers.atualizarLivro)
 
-module.exports = router;
+router.delete("/livros:id", livrosControllers.deletarLivro)
+
+module.exports = router

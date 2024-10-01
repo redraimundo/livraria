@@ -21,4 +21,18 @@ const livroSchema = new mongoose.Schema({
 
 const Livro = mongoose.model("Livro", livroSchema)
 
-module.exports = Livro
+const userSchema = new mongoose.Schema({
+    username: { 
+        type: String,
+        required: true, 
+        unique: true 
+    },
+    password: { 
+        type: String, 
+        required: true 
+    }
+})
+
+const User = mongoose.model('User', userSchema)
+
+module.exports = Livro, User
