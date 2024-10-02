@@ -12,7 +12,7 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "jsonwebtoken": "^9.0.2",
-    "mongoose": "^8.6.3"
+    "mongoose": "^8.7.0"
   },
-  "description": ""
+  "description": "Uma API simples para gerenciamento de livros e usuários, com autenticação baseada em JWT. Este projeto permite registrar usuários, fazer login e gerenciar uma coleção de livros."
 }
