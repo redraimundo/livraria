@@ -14,37 +14,39 @@ Uma API simples para gerenciamento de livros e usuários, com autenticação bas
 
 ## O que é o JSON Web Token (JWT)?
 
-blablablablabala
+No desenvolvimento da web, "tokens da web" quase sempre se referem a JSON Web Token. JSON Web Token (JWT) é um padrão para criar tokens da web assinados digitalmente que contêm dados JavaScript Object Notation (JSON). Um servidor cria um token que comprova a identidade do cliente e o envia ao cliente. O JWT usa assinaturas digitais para provar que o token é legítimo.
 
 ### Componentes do JWT
 
-1. **Cabeçalho**: 
+1. **Cabeçalho**: fornece informações sobre o JWT — que tipo de token o JWT é e qual método foi usado para assiná-lo digitalmente. 
 
-2. **Carga**:
+2. **Carga**: qualquer dado do JSON pode ficar aqui. As cargas de JWT para autenticação incluem declarações sobre a identidade do usuário na carga. Elas também podem incluir informações sobre as permissões do usuário, do servidor ou do endpoint de API. 
 
-3. **Assinatura Digital**:
+3. **Assinatura Digital**: a assinatura usa criptografia para assinar o cabeçalho e a carga com uma chave para garantir que os dados contidos sejam legítimos. Pense na assinatura digital como um selo inviolável em um frasco de remédio. 
 
 ### Quando usar JWT?
 
-- **Autorização**:
+- **Autorização**: Este é o cenário mais comum para o uso do JWT. Depois que o usuário estiver autenticado, cada requisição subsequente incluirá o JWT, permitindo que o usuário acesse rotas, serviços e recursos permitidos com esse token. 
 
-- **Troca de informações**:
+- **Troca de informações**: JSON Web Tokens são uma boa maneira de transmitir informações com segurança entre as partes. Como os JWTs podem ser assinados, por exemplo, usando pares de chaves pública e privada podemos garantir que os remetentes são quem dizem ser. 
 
 ### Vantagens do JWT
 
-- **Autocontido**:
+- **Autocontido**: As informações do usuário são armazenadas dentro do token, eliminando a necessidade de buscar dados em um banco de dados a cada requisição.
 
-- **Segurança**:
+- **Segurança**: Os tokens são assinados digitalmente, o que significa que o receptor pode verificar a autenticidade do token e garantir que não foi alterado.
 
-- **Escalabilidade**:
+- **Escalabilidade**: Como o token é gerado e validado no lado do servidor, ele é fácil de ser escalado em microserviços.
 
-- **Interoperabilidade**: 
+- **Interoperabilidade**: JWTs são baseados em JSON, o que os torna fáceis de usar em diferentes plataformas e linguagens de programação.
 
 ### Criação e Verificação de Tokens JWT
 
-1. **Criação do Token**:
+1. **Criação do Token**: Ao autenticar um usuário, um servidor cria um JWT com as informações relevantes (como ID do usuário) e uma data de expiração.
+O token é então assinado usando uma chave secreta.
 
-2. **Verificação do Token**:
+2. **Verificação do Token**: Quando o cliente faz uma requisição autenticada, ele deve enviar o token no cabeçalho da requisição (normalmente em Authorization).
+O servidor verifica a assinatura do token e se o token não expirou.
 
 ## Instalação
 
