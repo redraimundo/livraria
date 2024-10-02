@@ -76,3 +76,20 @@ node app.js
 ### Geração do Token
 
 1. 
+
+/livraria
+|-- /src
+|   |-- /controllers
+|   |   |-- livrosControllers.js
+|   |   |-- userControllers.js
+|   |-- /middlewares
+|   |   |-- authMiddleware.js
+|   |-- /models
+|   |   |-- Livro.js
+|   |   |-- User.js
+|   |-- /routes
+|   |   |-- livrosRoutes.js
+|   |   |-- userRoutes.js
+|   |-- app.js
+|-- .env
+|-- package.json
