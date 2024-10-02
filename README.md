@@ -51,11 +51,13 @@ O servidor verifica a assinatura do token e se o token não expirou.
 
 ## O que é BCrypt?
 
-blablabla
+O BCrypt foi desenvolvido por Niels Provos e David Mazières (1999) com o propósito de esconder senhas criadas pelos usuários em forma de texto “puro” em dados indecifráveis, utilizando o algoritmo hash. Essa é uma ferramenta segura para armazenar senhas no banco de dados e pode ser utilizada por qualquer linguagem (C, C ++, C #, Go, Java, JavaScript, Elixir, Perl, PHP, Python, Ruby e outros).
 
-1. **Salt**:
+O BCrypt possui dois critérios importantes:
 
-2. **SaltRounds**:
+1. **Salt**: é uma das vantagens do BCrypt, pois acrescenta aleatoriamente sequências de caracteres a senha, projetando resultados criptográficos complexos e aumentando a segurança contra ataques de força bruta, como o rainbow tables, ou seja, um hash sempre será diferente, mesmo que a senha seja igual.
+
+2. **SaltRounds**: a outra vantagem é a possibilidade de alterar valores do saltRounds (relacionado a custos), onde quanto maior o número fornecido, mais lento será o processamento para calcular o hash associado a senha. Por padrão, o valor utilizado é 10, mas é importante salientar que um valor mais alto demandará mais tempo para encontrar as possíveis senhas nos casos de ataque de força bruta.
 
 ### Como funciona o processo de login?
 
@@ -63,9 +65,9 @@ blablabla
 
 2. A senha é criptografada e salva no banco de dados.
 
-3. Ao tentar logar, a senha digitada é comparada com a versão hashada.
+3. Quando o usuário entrar com o login, o hash da senha digitada é verificado com o hash da senha original, ou seja, é feita uma comparação das senhas por meio do banco de dados.
 
-4. Se os hashes corresponderem, o acesso é concedido.
+4. No caso dos hashes corresponderem, o usuário conseguirá permissão de acesso. Caso contrário, retornará dados de login incorretos; Esse processo ocorre sempre que o usuário pretende acessar a conta.
 
 ## Instalação
 
