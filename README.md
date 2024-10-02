@@ -71,8 +71,6 @@ O BCrypt possui dois critérios importantes:
 
 ## Instalação
 
-## Instalação
-
 1. Clone o repositório:
 ```bash
 git clone https://github.com/redraimundo/livraria.git
@@ -98,8 +96,79 @@ node app.js
 ## Como Funciona o Sistema de Autenticação
 ### Geração do Token
 
-1. 
+1. **Login do Usuário**: Um token JWT é gerado ao fazer login.
 
+```javascript
+    const generateToken = (user) => {
+        return jwt.sign({ username: user.username }, 
+        process.env.JWT_SECRET, 
+        { expiresIn: '1h' })
+    }
+```
+### Hashing de Senhas
+
+2. **Uso do Bcryptjs**: As senhas são hashadas antes de serem armazenadas.
+
+```javascript
+    const hashedPassword = await bcrypt.hash(password, 10)
+    const user = new User({ username, password: hashedPassword })
+    await user.save()
+```
+
+### Middleware de Verificação
+
+3. **Middleware de Autenticação**: Verifica se o token enviado é válido.
+
+```javascript
+    const authenticateToken = (req, res, next) => {
+        const token = req.headers['authorization']?.split(' ')[1]
+        if (!token) return res.sendStatus(401)
+
+        jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
+            if (err) return res.sendStatus(403)
+            req.user = user
+            next()
+        })
+    }
+```
+
+### Rotas Protegidas
+
+4. **Proteção de Rotas**: O middleware é aplicado nas rotas que requerem autenticação.
+
+```javascript
+    router.get('/livros', authenticateToken, livrosControllers.buscarLivros)
+
+    router.post("/livros", authenticateToken, livrosControllers.cadastrarLivro)
+
+    router.put("/livros/:id", authenticateToken, livrosControllers.atualizarLivro)
+
+    router.delete("/livros/:id", authenticateToken, livrosControllers.deletarLivro)
+```
+
+### Exemplos de Uso
+
+#### 1. Registro de usuário
+
+print aqui
+
+#### 2. Login e Geração de Token
+
+print aqui
+
+**Resposta**:
+print aqui do token
+
+#### 3. Uso de Rotas Protegidas
+
+Após obter o token, você pode usá-lo para acessar todas as rotas protegidas. Adicione o token ao cabeçalho `Authorization`.
+
+print aqui
+
+
+## Estrutura do projeto
+
+```lua
 /livraria
 |-- /src
 |   |-- /controllers
@@ -116,3 +185,12 @@ node app.js
 |   |-- app.js
 |-- .env
 |-- package.json
+```
+
+## Autores 
+
+- **Eduardo Raimundo Ferreira da Silva**
+
+- **Kailane da Silva Ribeiro**
+
+- **Karina Bianek**
