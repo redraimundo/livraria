@@ -48,6 +48,27 @@ O token é então assinado usando uma chave secreta.
 2. **Verificação do Token**: Quando o cliente faz uma requisição autenticada, ele deve enviar o token no cabeçalho da requisição (normalmente em Authorization).
 O servidor verifica a assinatura do token e se o token não expirou.
 
+
+## O que é BCrypt?
+
+blablabla
+
+1. **Salt**:
+
+2. **SaltRounds**:
+
+### Como funciona o processo de login?
+
+1. O usuário cria uma conta.
+
+2. A senha é criptografada e salva no banco de dados.
+
+3. Ao tentar logar, a senha digitada é comparada com a versão hashada.
+
+4. Se os hashes corresponderem, o acesso é concedido.
+
+## Instalação
+
 ## Instalação
 
 1. Clone o repositório:
