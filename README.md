@@ -64,7 +64,7 @@ npm install express mongoose jsonwebtoken bcryptjs dotenv --save
 3. Crie um arquivo `.env` na raiz do projeto e adicione as seguintes variáveis:
 ```javascript
 const JWT_SECRET=seu_segredo_aqui
-MONGODB_URI=sua_uri_do_mongodb_aqui
+const MONGODB_URI=sua_uri_do_mongodb_aqui
 ```
 
 4. Inicie o servidor:
