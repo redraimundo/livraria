@@ -1,6 +1,6 @@
 const User = require('../models/User.js')
 const jwt = require('jsonwebtoken')
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 
 const generateToken = (user) => {
     return jwt.sign({ username: user.username }, process.env.JWT_SECRET, { expiresIn: '1h' })

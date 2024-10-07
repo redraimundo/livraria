@@ -1,4 +1,4 @@
-const Livro = require('../models/modelo')
+const Livro = require('../models/Livro.js')
 
 async function cadastrarLivro(req,res) {
     const { titulo, autor, genero, ano } = req.body
